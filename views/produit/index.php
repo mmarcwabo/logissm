@@ -1,3 +1,8 @@
+<pre>
+<?php
+var_dump($this->listOfProduit);
+?>
+</pre>
             <!-- Recent Sales Start -->
             <!-- Todo: Add a check user (admin or not), to display or not some options -->
             <h1>Gerer les articles / Effectuer une vente</h1>
@@ -33,12 +38,8 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                </div>
-            </div>
-            <!-- Recent Sales End -->
-
-            <?php
+                        <div>
+                        <?php
             //
             Utils::buttonize("Ajouter un produit", true, "#ajouterProduit");
             $formulaire_ajout_produit = [
@@ -47,12 +48,13 @@
               'Quantité:' => '<input type="text" name="quantite" class="form-control">',
               'Description:' => '<input type="text" name="description" class="form-control">'
             ];
-            Utils::modalize(
-              "Ajouter un article",
-              "produit/create",
-              $method = "POST",
-              $formulaire_ajout_produit,
-              "ajouterProduit",
-              "Ajouter"
-            );
+
+            
             ?>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- Recent Sales End -->

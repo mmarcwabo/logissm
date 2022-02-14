@@ -1,9 +1,5 @@
 <?php
 
-/**
- * 
- */
-
 class Produit extends Controller {
 
     function __construct() {
@@ -78,11 +74,11 @@ class Produit extends Controller {
         // @TODO: Do your error checking!
 
         $this->model->editSave($data);
-        header('location: ' . URL . 'produit');
+        header('location: ' . APP_ROOT . 'produit');
     }
 
     public function delete($id) {
-
+        $this->model->deleteProduit($id);
     }
 
     public function show() {
@@ -93,6 +89,7 @@ class Produit extends Controller {
         //Showing all the Produits
         //Sending list of Produits on the view
         $this->view->listOfProduit = $this->model->showProduitList();
+        $this->view->render('produit/index');
     }
 
     public function showAttributeOfProduitList($attribute) {

@@ -10,11 +10,11 @@ class Produit_Model extends Model {
 
     public function create($data) {
         //Inserting data from form in the database
-        $this->db->insert('Produit', ['denomination' => $data['denomination'],
+        $this->db->insert('produit', ['denomination' => $data['denomination'],
             'prix' => $data['prix'], 'description' => $data['description']
             ]);
         //Redirect to the view that sent the request to avoid data duplication on error
-        header('location:'.URL.'produit');
+        header('location:'. APP_ROOT .'produit');
     }
 
     public function showProduitList() {
@@ -44,16 +44,13 @@ class Produit_Model extends Model {
     }
 
     /**
-     * deleteUser -
+     * deleteProduit -
      * @param Integer $id
      * @return boolean
      */
-    public function deleteUser($id) {
-        $result = $this->db->select("SELECT * FROM utilisateur WHERE idutilisateurs= :id", array(":id" => $id));
-        if ($result[0]['roleutilisateur'] == 'Administrateur') {
-            return false;
-        }
-        $this->db->delete("utilisateur", "idutilisateurs= '$id'");
+    public function deleteProduit($id) {
+    
+        $this->db->delete("produit", "idproduit= '$id'");
     }
 
     /**

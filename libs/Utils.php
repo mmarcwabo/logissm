@@ -256,27 +256,27 @@ public static function iconize($image, $size){
 * @param $modal_id - Modal id
 * @return Html - Modal dialog
 */
-public static function modalize($title, $form_action, $method = "post", $form_fields, $modal_id, $btn_value){
-  $modal_dialog = '<div class="modal fade" id="' . $modal_id;
-  $modal_dialog .= '" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content"><div class="modal-header">
-  <h5 class="modal-title" id="exampleModalLongTitle">' . $title;
-  $modal_dialog .= '</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close">
-  <span aria-hidden="true">&times;</span></button></div>
-  <div class="modal-body">';
+public static function modalize($title, $form_action, $method = "post", $form_fields, $modal_id, $btn_value, $btn_icon){
+    $modal_dialog = '<div class="modal fade" id="' . $modal_id;
+    $modal_dialog .= '" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content"><div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">' . $title;
+    $modal_dialog .= '</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true"><i class="fa fa-times"></i></span></button></div>
+        <div class="modal-body">';
   
-  $modal_dialog .= '<form action ="' . $form_action . '" method="' . $method . '">';
-  foreach ($form_fields as $label => $field) {
-    $modal_dialog .= '<div class="form-group"><label for="'.$label.'">' . $label;
-    $modal_dialog .= '</label>' . $field . '<div>';
-  }
-
-  $modal_dialog .= '<button type="submit" class="btn btn-primary">' . $btn_value . 'Submit</button></form>';
-  $modal_dialog .= '</div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
-  $modal_dialog .= '<button type="button" class="btn btn-primary">Save changes</button></div></div></div></div>';
+    $modal_dialog .= '<form action ="' . $form_action . '" method="' . $method . '">';
+    foreach ($form_fields as $label => $field) {
+        $modal_dialog .= '<div class="form-group"><label for="'.$label.'">' . $label;
+        $modal_dialog .= '</label>' . $field . '<div>';
+    }
+    $modal_dialog .= '</div><div class="modal-footer"><button type="submit" class="btn btn-primary"><b>' . $btn_value . '</b>  <i class="fa fa-' . $btn_icon 
+    . '"></i></button></form>';
+    $modal_dialog .= '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
+    $modal_dialog .= '</div></div></div></div>';
   
-  echo $modal_dialog;
+    echo $modal_dialog;
 }
 
 
