@@ -1,0 +1,2 @@
+# logissm
+Stock Management System
