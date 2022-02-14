@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
-    <title><?=isset($this->title) ? $this->title : TITLE ?></title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="" name="keywords">
     <meta content="" name="description">
-
+    
     <!-- Favicon -->
     <link rel="icon" href="<?=APP_ROOT;?>images/logo.png" type="image/png" sizes="20x20">
 
@@ -26,6 +24,9 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -37,6 +38,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo APP_ROOT;?>style/css/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo APP_ROOT;?>style/css/index.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo APP_ROOT;?>style/css/menu.css" />
+    <title><?=isset($this->title) ? $this->title : TITLE ?></title>
 </head>
 
 <body>

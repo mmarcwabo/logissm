@@ -1,9 +1,6 @@
 {
     
     "require": {
-        "twbs/bootstrap": "5.0.2",
-        "components/font-awesome": "^5.15",
-        "components/jquery": "^3.6",
         "mpdf/mpdf": "^8.0"
     }
 }
