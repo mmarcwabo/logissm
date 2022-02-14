@@ -1,0 +1,22 @@
+.label-white{
+	color: white;
+}
+ul.nav.nav-tabs li a{
+	color:#fff!important;
+	padding: 11px;
+	border: solid 1px #fff;
+	font-weight: bold;
+}
+ul.nav.nav-tabs.footer-menu li a{
+	color:#fff!important;
+	padding: 11px;
+	border: 0!important;
+	font-weight: bold;
+}
+ul.nav.nav-tabs li a:hover{
+	color:#6dac29!important;
+	padding: 11px;
+	border: solid 1px #fff;
+	text-decoration: none;
+	transition: 0.33s;
+}
