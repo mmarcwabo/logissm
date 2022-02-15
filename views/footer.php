@@ -16,25 +16,15 @@
             <!-- Footer End -->
         </div>
         <!-- Content End -->
-
-
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-    </div>
-    <div>
+    <!-- Modals -->
     <?php
-        Utils::modalize(
-              "Ajouter un article",
-              APP_ROOT."/produit/create",
-              $method = "POST",
-              $formulaire_ajout_produit,
-              "ajouterProduit",
-              "Ajouter",
-              "plus"
-        );
-                ?>
-    </div>
+    //Modals for produit
+    include_once 'produit/modals_produit.php';
+    ?>
 
+
+
+    <!-- Modals End -->
     <!-- JavaScript Libraries -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
