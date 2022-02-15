@@ -18,6 +18,7 @@ class Produit extends Controller {
         //Display Produits' list before render it on the page
         //This method renders the view 'produit/index'
         $this->showProduitList();
+        $this->view->render('produit/index', $content = "getin", $sidebar = true, $navbar =true);
     }
 
     public function create() {
@@ -39,10 +40,11 @@ class Produit extends Controller {
         //Real insert here
         $this->model->create($data);
         //Send a message
-        $this->view->message_ = "Produit ajouté au stock";
+        
         //Refresh the products list before render it on the page
         //This method renders the view 'produit/index'
         $this->showProduitList();
+        $this->view->render('produit/index', $content = "Produit ajouté au stock.", $sidebar = true, $navbar =true);
     }
 
     public function edit($id) {
@@ -85,12 +87,10 @@ class Produit extends Controller {
     public function show() {
 
     }
-
-    public function showProduitList() {
-        //Showing all the Produits
-        //Sending list of Produits on the view
-        $this->view->listOfProduit = $this->model->showProduitList();
-        $this->view->render('produit/index', $content = true, $sidebar = true, $navbar =true);
+    //Showing all the Produits
+    public function showProduitList() {        
+        //Sending list of Produits on the view        
+        $this->view->listOfProduit = $this->model->showProduitList();        
     }
 
     public function showAttributeOfProduitList($attribute) {

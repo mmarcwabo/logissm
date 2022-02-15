@@ -2,12 +2,16 @@
 
 class View  
 {
+    
     function __construct(){
         //echo "<br/>Main view";
     }
 
     //A method that allows to render a view given to it as an arg
-    public function render($viewname, $content = false, $sidebar = false, $navbar= false){
+    /**
+     * 
+     */
+    public function render($viewname, $message_, $sidebar = false, $navbar= false){
         //Including the header
         require "views/header.php";
         //Including sidebar too
@@ -23,9 +27,8 @@ class View
         }          
         //Including the page content
         require "views/".$viewname.".php";
-        if ($content) {
-            //echo $content;
-        }
+        include "views/".$viewname.".html";
+
         //Including the footer
         require "views/footer.php";
 

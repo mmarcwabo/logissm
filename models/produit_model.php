@@ -9,11 +9,13 @@ class Produit_Model extends Model {
     }
 
     public function create($data) {
-        //Inserting data from form in the database
+        // Inserting data from form in the database
         $this->db->insert('produit', ['denomination' => $data['denomination'],
             'prix' => $data['prix'], 'description' => $data['description']
             ]);
-        //Redirect to the view that sent the request to avoid data duplication on error
+        // Define the message
+        $this->view->message_= "Produit ajouté au stock.";
+        // Redirect to the view that sent the request to avoid data duplication on error
         header('location:'. APP_ROOT .'produit');
     }
 

@@ -1,13 +1,19 @@
 <?php 
-$remark = (isset($this->message_)) ? $this->message_ : "Une erreur est survenue";
+$remark = (isset($message_)) ? $message_ : "Une erreur est survenue";
 $remark_type = "success";
+echo "<pre>";
+var_dump($this);
+echo "</pre>";
+echo $message_;
 ?>
 <!-- Recent Sales Start -->
             <!-- Todo: Add a check user (admin or not), to display or not some options -->
-            
+                
             <div class="container-fluid pt-4 px-4">
-                <h1>Gerer les articles / Effectuer une vente</h1>
-                <?=Utils::remarkBox("Succès", $remark, $remark_footer = false,  $remark_type)?>
+                <div class="container-fluid pt-4 px-4">
+                    <h1>Gerer les articles / Effectuer une vente</h1>
+                    <?=Utils::remarkBox("Succès", $remark, $remark_footer = false,  $remark_type)?>
+                </div>
                 <p><a class="btn btn-sm btn-success" data-toggle="modal" data-target="#ajouterProduit"><i class="fa fa-plus"></i> Nouveau produit</a></p>
                 
                 <div class="bg-light text-center rounded p-4">

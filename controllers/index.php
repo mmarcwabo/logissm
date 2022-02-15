@@ -21,7 +21,8 @@ class Index extends Controller{
         $this->view->title = "Logis - Stock Manager";
         $this->listAttributeOfProduit("denomination");
         //Render the dashboard view here
-        $this->view->render("index/index");
+        $this->view->render("index/index", "Connectez-vous ou Inscrivez-vous", false, false);
+        //$this->view->render('produit/index', $content = "getin", $sidebar = true, $navbar =true);
     }
 
     public function listAttributeOfProduit($attribute) {
