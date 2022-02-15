@@ -1,12 +1,15 @@
-<pre>
-<?php
-var_dump($this->listOfProduit);
+<?php 
+$remark = (isset($this->message_)) ? $this->message_ : "Une erreur est survenue";
+$remark_type = "success";
 ?>
-</pre>
-            <!-- Recent Sales Start -->
+<!-- Recent Sales Start -->
             <!-- Todo: Add a check user (admin or not), to display or not some options -->
-            <h1>Gerer les articles / Effectuer une vente</h1>
+            
             <div class="container-fluid pt-4 px-4">
+                <h1>Gerer les articles / Effectuer une vente</h1>
+                <?=Utils::remarkBox("Succès", $remark, $remark_footer = false,  $remark_type)?>
+                <p><a class="btn btn-sm btn-success" data-toggle="modal" data-target="#ajouterProduit"><i class="fa fa-plus"></i> Nouveau produit</a></p>
+                
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Articles</h6>
@@ -39,22 +42,10 @@ var_dump($this->listOfProduit);
                             </tbody>
                         </table>
                         <div>
-                        <?php
-            //
-            Utils::buttonize("Ajouter un produit", true, "#ajouterProduit");
-            $formulaire_ajout_produit = [
-              'Article:' => '<input type="text" name="denomination" class="form-control">',
-              'Prix unitaire:' => '<input type="text" name="prix" class="form-control">',
-              'Quantité:' => '<input type="text" name="quantite" class="form-control">',
-              'Description:' => '<input type="text" name="description" class="form-control">'
-            ];
-
-            
-            ?>
-                        </div>
                     </div>
 
                 </div>
-
             </div>
             <!-- Recent Sales End -->
+
+

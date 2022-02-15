@@ -1,5 +1,4 @@
 <h1>Dashboard</h1>
-
 <!-- Sale & Revenue Start -->
 <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
@@ -115,7 +114,6 @@
                 </div>
             </div>
             <!-- Recent Sales End -->
-
             <!-- Sales Chart Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
@@ -140,4 +138,3 @@
                 </div>
             </div>
             <!-- Sales Chart End -->
-            

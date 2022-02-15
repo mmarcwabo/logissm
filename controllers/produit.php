@@ -16,9 +16,8 @@ class Produit extends Controller {
             "scripts/js/produit.js"
         );
         //Display Produits' list before render it on the page
+        //This method renders the view 'produit/index'
         $this->showProduitList();
-        //Render the dashboard view here
-        $this->view->render("produit/index", $content = true, $sidebar = true, $navbar =true);
     }
 
     public function create() {
@@ -39,9 +38,11 @@ class Produit extends Controller {
         }
         //Real insert here
         $this->model->create($data);
+        //Send a message
+        $this->view->message_ = "Produit ajouté au stock";
         //Refresh the products list before render it on the page
+        //This method renders the view 'produit/index'
         $this->showProduitList();
-        $this->view->render("produit/index");
     }
 
     public function edit($id) {
@@ -89,7 +90,7 @@ class Produit extends Controller {
         //Showing all the Produits
         //Sending list of Produits on the view
         $this->view->listOfProduit = $this->model->showProduitList();
-        $this->view->render('produit/index');
+        $this->view->render('produit/index', $content = true, $sidebar = true, $navbar =true);
     }
 
     public function showAttributeOfProduitList($attribute) {
@@ -108,9 +109,9 @@ class Produit extends Controller {
     }
 
     /**/
-    public function getservicesof($category){
-      $this->view->servicesOfCategory = $this->model->getServicesOf($category);
+    public function getQuantitiesof($produit){
+      $this->view->quantitiesOfProduit = $this->model->getQuantitiesof($produit);
       //Render all the service of $category
-      $this->view->render("Produit/index");
+      $this->view->$this->view->render("produit/index", $content = true, $sidebar = true, $navbar =true);
     }
 }
