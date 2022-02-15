@@ -279,5 +279,13 @@ public static function modalize($title, $form_action, $method = "post", $form_fi
     echo $modal_dialog;
 }
 
+public static function remarkBox($remark_title, $remark_body, $remark_footer = false,  $type_ = "danger"){
+  $remark = '<p><div class="alert alert-'. $type_ .'" role="alert"><h4 class="alert-heading">';
+  $remark .= $remark_title; 
+  $remark .= '</h4><p>' . $remark_body . '</p>';
+  $remark .= '<hr><p class="mb-0">'. $remark_footer ? $remark_footer : "" .'</p></div></p>';
+
+  echo $remark;
+}
 
 }//class Utils end
