@@ -2,7 +2,7 @@
 #Class name : Utils
 #Purpose : Usual fonctions to format data and so on
 #Author : mwabo
-#email : mwabo@exsofth.com
+#email : marcellin@wabo.work
 
 class Utils{
 //Show a php array as an html table
@@ -124,7 +124,7 @@ public static function showDatatable($table_head, $table_data){
   echo $data_table;
 }
 
-public static function getRandowItems($items_table, $number){
+public static function getRandomItems($items_table, $number){
   $items_table = shuffle(shuffle($items_table));
   $random_items = array();
   for ($i=0;$ $i < $number; $i++){
@@ -150,108 +150,7 @@ public static function buttonize($label, $isForModal, $targetID){
         '.$label.'
         </button>';
 }
-/**
-* overlyzeList is specific to display categories
-* @param $array_list - Array of categories to Displays
-* @param $route - The link on the showed Category
-* @param $town_name - The town which services, or professionals
-* are classified by categories
-* @return String - html list
-*/
-public static function overlyzeList($array_list, $route, $town_name){
 
-$route = URL.$route.$town_name;
-
-echo '<ul class="list-group">';
-//Specific for categories
-for($i = 0; $i<count($array_list); $i++){
-  $category_name = Model::getFieldFromAnyElse(
-    "categorie","titre", "idcategorie",$array_list[$i]['categorie_idcategorie']
-  );
-  $category_count = $array_list[$i]['COUNT(categorie_idcategorie)'];
-
-  echo '<a href="'
-  .$route.'/'.$category_name.'">
-  <li  class="list-group-item d-flex justify-content-between align-items-center">'
-  .$category_name.'<span class="badge badge-success badge-pill">'
-  .$category_count.'</span></li></a>';
-}
-
-echo '</u>';
-}
-/**
-* overlyzeList is specific to display services of a Category
-* on a town page.
-* @param $array_list - Array of services to Displays
-* @param $route -
-* @param $limit - Define the number of element to display in the list
-* @return String - html link to show a single service
-*/
-public static function customflexcontent($array_list, $route, $limit){
-//Number of items in the array
-$item_number = count ($array_list);
-
-if($item_number == 0){
-  echo "Aucun service de cette ville enregistré dans les annuaires";
-  exit;
-}
-//Setting up a limit of item to Display
-//Thinking about a pagination system
-$number_of_pages = 1;
-$for_loop_var = 1;
-$next = "";
-if($item_number > $limit){
-  //item number is gt the Limit
-  //Let check the modulo
-  $for_loop_var = $limit;
-  if(($item_number%$limit)==0){
-  $number_of_pages = 1;
-  }else{
-
-    $number_of_pages = $number_of_pages + ($item_number/$limit - ($item_number%$limit));
-  }
-}else{
-  //If the limit is gt the number of returned items in the array
-  $number_of_pages = $number_of_pages;
-  $for_loop_var = $limit - $item_number;
-}
-$link = URL.$route;
-if ($limit > 0){
-  for($i=0; $i<$for_loop_var;$i++){
-    $heading = $array_list[$i]['denomination'];
-    $horaire = $array_list[$i]['horairedisponibilite'];
-    $details = $array_list[$i]['details'];
-    $contact = $array_list[$i]['contacts'];
-    $phone  = substr((explode(',', $contact)[0]), 4, -1);
-    $email = substr((explode(',', $contact)[1]), 4, -1);
-    $adresse = $array_list[$i]['adresse'];
-    //Create a new variable to avoid concatenation
-    //of all denomination white looping
-    $the_link = $link.$array_list[$i]['denomination'];
-    if($number_of_pages>1){
-      $next = '<a href="'.$link.'/'.$number_of_pages;
-      $next.= '">Suivant</a>';
-    }else{
-      $the_link = $link.$array_list[$i]['denomination']."/1";
-    }
-      //
-      $number_of_pages--;
-    echo '
-    <a href="'.$the_link.'" class="list-group-item list-group-item-action flex-column align-items-start">
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">'.$heading.'</h5>
-        <small>'.$horaire.'</small>
-      </div>
-      <p class="mb-1">'.$details.'</p>
-      <small>'.$phone.' - '.$email.' - '.$adresse.'</small>
-    </a>
-    ';
-    //Check here the purpose of next int
-    //echo $next;
-  }
-}
-
-}
 /**
 * iconize
 * @param $image - Image path
@@ -308,6 +207,36 @@ public static function remarkBox($remark_title, $remark_body, $remark_footer = f
   $remark .= '<hr><p class="mb-0">'. $remark_footer ? $remark_footer : "" .'</p></div></p>';
 
   echo $remark;
+}
+//
+public static function table_th($th_array){
+   foreach($th_array as $th) {
+     echo '<th>' . $th . '</th>';
+   }
+}
+
+public static function table_td($items_array, $db_columns, $actions = false, $quantity = false){
+    //Config actions
+    $action_buttons = '';
+    $quantity_field = '';
+    if ($actions == true) {
+        $action_buttons .= '<td><a class="btn btn-sm btn-success" href=""><i class="fa fa-money-bill"></i> Vendre</a>
+            <a class="btn btn-sm btn-primary" href=""><i class="fa fa-edit"></i> Modifier</a>
+            <a class="btn btn-sm btn-primary" href=""><i class="fa fa-plus"></i> Ajouter</a>
+            <a class="btn btn-sm btn-danger" href=""><i class="fa fa-times"></i> Supprimer</a></td>';
+    }
+    if ($quantity == true) {
+        $quantity_field .= '<td><input class="form-control" type="number" name="quantiteV" id="" size="4"></td>';
+    }
+
+    foreach($items_array as $item) {
+        echo '<tr>';
+            foreach($db_columns as $item_property) {
+                echo '<td>' . $item[$item_property] . '</td>';
+            }
+            echo $quantity_field . $action_buttons;
+        echo '</tr>';
+    }
 }
 
 }//class Utils end

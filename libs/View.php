@@ -1,5 +1,4 @@
 <?php
-
 class View  
 {
     
@@ -7,11 +6,13 @@ class View
         //echo "<br/>Main view";
     }
 
-    //A method that allows to render a view given to it as an arg
-    /**
-     * 
-     */
-    public function render($viewname, $message_, $sidebar = false, $navbar= false){
+    public function render($viewname, $content, $sidebar = false, $navbar= false){
+        
+        if($content != '') {
+            list($message_, $message_type_) = explode("|", $content);
+            Session::add_to_session('message_', $message_);
+            Session::add_to_session('message_type_', $message_type_);
+        }
         //Including the header
         require "views/header.php";
         //Including sidebar too
@@ -30,6 +31,5 @@ class View
 
         //Including the footer
         require "views/footer.php";
-
     }
 }
