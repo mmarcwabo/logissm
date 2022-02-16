@@ -2,7 +2,7 @@
 $remark = (isset($message_)) ? $message_ : "Une erreur est survenue";
 $remark_type = "success";
 echo "<pre>";
-var_dump($this);
+print_r($this->listOfProduit);
 echo "</pre>";
 echo $message_;
 ?>
@@ -53,5 +53,9 @@ echo $message_;
                 </div>
             </div>
             <!-- Recent Sales End -->
+            <?php
+            $table_head = ["idproduit", "denomination", "prix", "description"];
+            Utils::showDatatable($table_head, $this->listOfProduit);
+            ?>
 
 

@@ -27,7 +27,6 @@ class View
         }          
         //Including the page content
         require "views/".$viewname.".php";
-        include "views/".$viewname.".html";
 
         //Including the footer
         require "views/footer.php";

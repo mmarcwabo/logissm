@@ -99,11 +99,29 @@ public static function addBreadCumb(){
         "</a> >".basename($_SERVER['PHP_SELF'], '.php');*/
 }
 
-/**/
+/**
+ * $title_array
+ * $data_array
+ */
 
-public static function showDatatable($source)
-{
-  echo "Show datatable here<br/>";
+public static function showDatatable($table_head, $table_data){
+  //
+  $data_table = '<table><thead><tr>';
+  foreach ($table_head as $th) {
+    $data_table .= '<th>' . $th . '<th>';
+  }
+  $data_table .= '</tr></thead><tbody>';
+  //
+  foreach ($table_data as $td) {
+    $data_table .= '<tr>';
+    for ($i = 0; $i < count($table_head); $i++) {
+      $data_table .= '<td>' . $td[$i] . '</td>';
+    }
+    $data_table .= '</tr>';
+  }
+  $data_table .= '</tbody></table>';
+
+  echo $data_table;
 }
 
 public static function getRandowItems($items_table, $number){
@@ -257,22 +275,25 @@ public static function iconize($image, $size){
 * @return Html - Modal dialog
 */
 public static function modalize($title, $form_action, $method = "post", $form_fields, $modal_id, $btn_value, $btn_icon){
+
     $modal_dialog = '<div class="modal fade" id="' . $modal_id;
+
     $modal_dialog .= '" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content"><div class="modal-header">
+        <div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">' . $title;
     $modal_dialog .= '</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true"><i class="fa fa-times"></i></span></button></div>
-        <div class="modal-body">';
+        <span aria-hidden="true"><i class="fa fa-times"></i></span></button></div><div class="modal-body">';
   
     $modal_dialog .= '<form action ="' . $form_action . '" method="' . $method . '">';
+    
     foreach ($form_fields as $label => $field) {
         $modal_dialog .= '<div class="form-group"><label for="'.$label.'">' . $label;
         $modal_dialog .= '</label>' . $field . '<div>';
     }
-    $modal_dialog .= '</div><div class="modal-footer"><button type="submit" class="btn btn-primary"><b>' . $btn_value . '</b>  <i class="fa fa-' . $btn_icon 
-    . '"></i></button></form>';
+
+    $modal_dialog .= '</div><div class="modal-footer"><button type="submit" class="btn btn-primary"><b>' . $btn_value 
+    . '</b>  <i class="fa fa-' . $btn_icon . '"></i></button></form>';
+
     $modal_dialog .= '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
     $modal_dialog .= '</div></div></div></div>';
   
@@ -280,6 +301,7 @@ public static function modalize($title, $form_action, $method = "post", $form_fi
 }
 
 public static function remarkBox($remark_title, $remark_body, $remark_footer = false,  $type_ = "danger"){
+
   $remark = '<p><div class="alert alert-'. $type_ .'" role="alert"><h4 class="alert-heading">';
   $remark .= $remark_title; 
   $remark .= '</h4><p>' . $remark_body . '</p>';
