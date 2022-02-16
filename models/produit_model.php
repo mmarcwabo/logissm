@@ -1,5 +1,4 @@
 <?php
-
 //Produit_model
 
 class Produit_Model extends Model {
@@ -13,8 +12,8 @@ class Produit_Model extends Model {
         $this->db->insert('produit', ['denomination' => $data['denomination'],
             'prix' => $data['prix'], 'description' => $data['description']
             ]);
-        // Define the message
-        $this->view->message_= "Produit ajouté au stock.";
+        // Define the type of message
+        Session::add_to_session('message_type_', 'success');
         // Redirect to the view that sent the request to avoid data duplication on error
         header('location:'. APP_ROOT .'produit');
     }
