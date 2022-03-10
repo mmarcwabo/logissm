@@ -18,7 +18,7 @@ class Produit extends Controller {
         //Display Produits' list before render it on the page
         //This method renders the view 'produit/index'
         $this->showProduitList();
-        $this->view->render('produit/index', $content = "", $sidebar = true, $navbar =true);
+        $this->view->render('produit/index', $content = "Produit ajouté au stock#success", $sidebar = true, $navbar =true);
     }
 
     public function create() {
@@ -41,7 +41,7 @@ class Produit extends Controller {
         $this->model->create($data);
         //This method renders the view 'produit/index'
         $this->showProduitList();        
-        $this->view->render('produit/index', $content = "Produit ajouté au stock|success", $sidebar = true, $navbar =true);
+        $this->view->render('produit/index', $content = "Produit ajouté au stock#success", $sidebar = true, $navbar =true);
     }
 
     public function edit($id) {

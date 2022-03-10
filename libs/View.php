@@ -9,7 +9,7 @@ class View
     public function render($viewname, $content, $sidebar = false, $navbar= false){
         
         if($content != '') {
-            list($message_, $message_type_) = explode("|", $content);
+            list($message_, $message_type_) = explode("#", $content);
             Session::add_to_session('message_', $message_);
             Session::add_to_session('message_type_', $message_type_);
         }

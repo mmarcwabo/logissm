@@ -21,7 +21,7 @@ class AnError extends Controller {
         //echo $page;
         $this->view->title = "Ressource non trouvée";
         $this->view->message = "La page <b>".$page."</b> est introuvable.";
-        $this->view->render("error/index");
+        $this->view->render("error/index", "");
 
         exit;
     }
